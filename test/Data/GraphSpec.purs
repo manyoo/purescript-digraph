@@ -16,8 +16,7 @@ import Data.Graph
 
 graphSpec :: Spec Unit
 graphSpec = describe "Graph" do
-  let edges = fromFoldable $
-    [ Tuple 'A' (fromFoldable [Tuple 'B' 1, Tuple 'C' 2])
+  let edges = fromFoldable $ [ Tuple 'A' (fromFoldable [Tuple 'B' 1, Tuple 'C' 2])
     , Tuple 'B' (fromFoldable [Tuple 'A' 1, Tuple 'D' 3])
     , Tuple 'C' (fromFoldable [Tuple 'A' 2, Tuple 'D' 4])
     , Tuple 'D' (fromFoldable [Tuple 'B' 3, Tuple 'C' 4])
@@ -30,7 +29,7 @@ graphSpec = describe "Graph" do
 
   describe "empty" do
     it "returns an empty graph" do
-      M.isEmpty (unwrap $ empty :: Graph Int Int) `shouldEqual` true
+      M.isEmpty (unwrap (empty :: Graph Int Int)) `shouldEqual` true
 
   describe "isEmpty" do
     it "returns an empty graph" do
