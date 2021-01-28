@@ -3,10 +3,10 @@ module Test.Main where
 import Prelude
 
 import Effect (Effect)
-import Test.Spec.Runner (run)
-import Test.Spec.Reporter.Console (consoleReporter)
-
+import Effect.Aff (launchAff_)
 import Test.Data.GraphSpec (graphSpec)
+import Test.Spec.Reporter.Console (consoleReporter)
+import Test.Spec.Runner (run)
 
 main :: Effect Unit
-main = run [consoleReporter] graphSpec
+main = launchAff_ $ run [consoleReporter] graphSpec
