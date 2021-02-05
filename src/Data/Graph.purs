@@ -1,6 +1,7 @@
 module Data.Graph
   ( AdjacencyList
-  , Graph
+  , Graph(..)
+  , unGraph
   , empty
   , isEmpty
   , fromAdjacencyList
@@ -51,6 +52,9 @@ derive instance newtypeGraph :: Newtype (Graph a w) _
 
 instance showGraph :: (Show a, Show w) => Show (Graph a w) where
   show = show <<< unwrap
+
+unGraph :: forall a w. Graph a w -> Map a (Map a w)
+unGraph = unwrap
 
 -- | Create an empty graph.
 empty :: forall a w. (Ord a) => Graph a w
